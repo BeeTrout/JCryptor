@@ -22,7 +22,7 @@ public class JCryptor {
 
         for (int i = 0; i < l; i++) {
 
-            if (Main.key % ((i == 0) ? i + 1 : i) == 0) {
+            if (Main.key % ((i == 0) ? 1 : i) == 0) {
                 arr[i] -= Main.key / l + i + Math.sqrt(Main.key);
             } else {
                 arr[i] -= Main.key / l + i;
