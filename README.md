@@ -16,7 +16,7 @@ JCryptor is compiled using `JDK 16`
 
 ### Bugs and bad design
 
-There is a lot of bugs, feel free to write them to [Issues](https://github.com/BeeTrout/JCryptor/issues).
+If you find some bugs, feel free to write them to [Issues](https://github.com/BeeTrout/JCryptor/issues).
 
 Also the design is awful, I’ll work on that later.
 
