@@ -10,8 +10,6 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Main {
 
-    public static int key = 8798687;
-
     public static JTextField pathF;
     public static JTextField keyF;
     public static ButtonGroup modeGroup;
@@ -27,9 +25,9 @@ public class Main {
     public static void start() throws IOException {
 
         String pathStr = pathF.getText();
-        key = Integer.parseInt(keyF.getText());
+        JCryptor.setKey(Long.parseLong(keyF.getText()));
 
-        byte[] byteArr = fileToByteArr(pathStr);
+        byte[] byteArr = JCryptor.fileToByteArr(pathStr);
 
         System.out.println(Arrays.toString(byteArr));
 
@@ -41,7 +39,7 @@ public class Main {
 
         System.out.println(Arrays.toString(byteArr));
 
-        byteArrToFile(pathStr, byteArr);
+        JCryptor.byteArrToFile(pathStr, byteArr);
 
     }
 
@@ -83,9 +81,9 @@ public class Main {
         keyB.setBounds(300, 120, 100, 30);
         keyB.setMargin(new Insets(5, 0, 5, 0));
         keyB.addActionListener(e -> {
-            int n;
+            long n;
             do {
-                n = ThreadLocalRandom.current().nextInt();
+                n = ThreadLocalRandom.current().nextLong();
                 keyF.setText("" + n);
             } while (n == 0);
         });
@@ -112,20 +110,6 @@ public class Main {
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
-    }
-
-    public static byte[] fileToByteArr(String s) throws IOException {
-
-        Path p = Paths.get(s);
-        return Files.readAllBytes(p);
-
-    }
-
-    public static void byteArrToFile(String path, byte[] bytes) throws IOException {
-
-        FileOutputStream s = new FileOutputStream(path);
-        s.write(bytes);
 
     }
 
